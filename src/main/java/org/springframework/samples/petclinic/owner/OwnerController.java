@@ -165,5 +165,19 @@ class OwnerController {
 		mav.addObject(owner);
 		return mav;
 	}
+	
+	/**
+	 * Deletes an owner by ID.
+	 * <p>
+	 * This endpoint is intentionally vulnerable to SQLi attacks to demonstrate Contrast
+	 * Security analysis.
+	 * @param ownerId the ID of the owner to delete
+	 */
+	@DeleteMapping("/owners/{ownerId}")
+	public void deleteOwner(@PathVariable("ownerId") String ownerId) throws SQLException {
+		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
+			statement.execute("DELETE FROM owners WHERE id = " + ownerId);
+		}
+	}
 
 }
