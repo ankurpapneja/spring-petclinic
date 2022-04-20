@@ -24,7 +24,7 @@ jobs:
           cache: maven
           
       - name: Build with Maven Wrapper
-        run: ./mvnw -B package
+        run: ./mvnw -B package -DskipTests=true
 
       - name: Contrast Scan
         uses: Contrast-Security-OSS/contrastscan-action@v1
