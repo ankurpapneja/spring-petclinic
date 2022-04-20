@@ -22,5 +22,19 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: maven
+          
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
+
+      - name: Contrast Scan
+        uses: Contrast-Security-OSS/contrastscan-action@v1
+        with:
+          artifact: target/spring-petclinic-2.6.0-SNAPSHOT.jar
+          api_url: "https://apptwo.contrastsecurity.com/Contrast"
+        env:
+          CONTRAST__API__USER_NAME: "ankur.papneja@contrastsecurity.com"
+          CONTRAST__API__ORGANIZATION_ID: "f3b61ec4-9959-40c6-93ad-1de953429763"
+          CONTRAST__API__SERVICE_KEY: ${{ secrets.CONTRAST_SERVICE_KEY }}
+          CONTRAST__API__API_KEY: ${{ secrets.CONTRAST_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
