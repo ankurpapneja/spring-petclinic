@@ -17,7 +17,6 @@ package org.springframework.samples.petclinic.owner;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.validation.Valid;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -28,7 +27,6 @@ import javax.sql.DataSource;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -177,17 +175,16 @@ class OwnerController {
 	}
 	
 	/**
-	 * Deletes an owner by ID.
-	 * <p>
-	 * This endpoint is intentionally vulnerable to SQLi attacks to demonstrate Contrast
-	 * Security analysis.
-	 * @param ownerId the ID of the owner to delete
-	 */
+	* Deletes an owner by ID.
+	* <p>
+	* This endpoint is intentionally vulnerable to SQLi attacks to demonstrate Contrast
+	* Security analysis.
+	* @param ownerId the ID of the owner to delete
+	*/
 	@DeleteMapping("/owners/{ownerId}")
 	public void deleteOwner(@PathVariable("ownerId") String ownerId) throws SQLException {
 		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
 			statement.execute("DELETE FROM owners WHERE id = " + ownerId);
 		}
 	}
-
 }
