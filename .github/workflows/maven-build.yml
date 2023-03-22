@@ -30,7 +30,7 @@ jobs:
         run: ./mvnw -B package -DskipTests=true
 
       - name: Contrast SCA
-        uses: Contrast-Security-OSS/contrast-sca-action@v1
+        uses: Contrast-Security-OSS/contrast-sca-action@v1.0.1
         with:
           apiKey: ${{ secrets.CONTRAST_API_KEY }}
           authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
