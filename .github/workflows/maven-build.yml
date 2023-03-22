@@ -34,8 +34,8 @@ jobs:
         with:
           apiKey: ${{ secrets.CONTRAST_API_KEY }}
           authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
-          apiUrl: "https://apptwo.contrastsecurity.com/"
+          apiUrl: "https://apptwo.contrastsecurity.com"
           orgId: "f3b61ec4-9959-40c6-93ad-1de953429763"
-          filePath: ./pom.xml
+          filePath: pom.xml
           severity: high
           fail: true
